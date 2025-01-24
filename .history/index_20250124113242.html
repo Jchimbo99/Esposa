@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Desplazamiento</title>
+    <style>
+      
+
+        /* Personalización de la barra de desplazamiento */
+        body::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.2); /* Fondo de la barra */
+            border-radius: 10px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #f67280; /* Color del control deslizante */
+            border-radius: 10px;
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: #c06c84; /* Color al pasar el cursor */
+        }
+
+        .content {
+            margin: 0 auto;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .content h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Bienvenido a la página con barra de desplazamiento</h1>
+        <p>
+            Este es un ejemplo de cómo personalizar una barra de desplazamiento usando CSS. 
+            La barra de desplazamiento solo aparecerá cuando haya suficiente contenido en la página.
+        </p>
+        <!-- Añade contenido de prueba -->
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis eros sit amet 
+            risus malesuada, quis consequat lorem pulvinar. Nulla facilisi. Nam fermentum dui a 
+            magna posuere, sed sollicitudin nunc interdum. Integer nec consequat enim. 
+        </p>
+        <p>
+            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis 
+            egestas. Maecenas ut facilisis purus. Ut tincidunt ex non erat congue tristique.
+        </p>
+        <p>
+            Vivamus vestibulum eros vitae eros auctor aliquet. Suspendisse potenti. Curabitur eu 
+            nisi nec arcu dictum viverra in vel libero. Phasellus nec sapien quam. Donec dictum, 
+            urna eget venenatis cursus, erat turpis suscipit nisi, nec consequat ipsum dolor ac 
+            eros. Curabitur at nisl quis velit vehicula aliquam. Donec tristique tortor ac varius 
+            eleifend. Nullam sit amet ornare arcu. Curabitur vel dui lorem.
+        </p>
+        <p>
+            Aenean vehicula viverra tellus, sit amet gravida lorem vehicula quis. Curabitur nec 
+            quam in libero facilisis cursus. Vestibulum sed nibh ac elit lacinia tincidunt sed 
+            quis metus. Aliquam erat volutpat.
+        </p>
+        <p>
+            <strong>¡Gracias por probar este ejemplo!</strong> Si deseas añadir más personalizaciones 
+            o funciones, no dudes en preguntar.
+        </p>
+    </div>
+</body>
+</html>

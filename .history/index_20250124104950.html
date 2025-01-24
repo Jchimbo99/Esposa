@@ -16,10 +16,14 @@
             color: #fff;
             text-align: center;
             padding: 20px;
-            overflow-y: auto; /* Permite desplazamiento vertical */
-            height: 100vh; /* Asegura que tome toda la pantalla */
-            margin: 0;
+            animation: backgroundPulse 3s infinite alternate;
         }
+
+        @keyframes backgroundPulse {
+            0% { background: linear-gradient(120deg, #ff9a9e, #fad0c4); }
+            100% { background: linear-gradient(120deg, #f67280, #c06c84); }
+        }
+
         h1 {
             font-family: 'Dancing Script', cursive;
             font-size: 4rem;
@@ -49,7 +53,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .video-container {
+        .video-container, #cartaContainer {
             display: none;
             margin-top: 20px;
         }
@@ -60,14 +64,15 @@
             height: 315px;
             border: none;
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
 
-        #cartaContainer {
-            display: none;
-            margin-top: 20px;
+        iframe:hover {
+            transform: scale(1.05);
         }
 
         #carta {
+            display: none;
             padding: 20px;
             background-color: #fff;
             color: #000;
@@ -75,101 +80,78 @@
             border-radius: 10px;
             margin-top: 20px;
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
         }
 
-        audio {
-            width: 100%;
-            max-width: 500px;
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .carta p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .carta .signature {
+            font-size: 1.3rem;
+            font-weight: bold;
             margin-top: 20px;
         }
 
-        /* Corazones flotantes */
-        .heart {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background-color: #ff6b81;
-            border-radius: 50%;
-            animation: float 8s infinite;
-            transform: rotate(45deg);
+        /* Reproductor de audio */
+        audio {
+            display: none; /* Ocultar el reproductor */
         }
 
-        .heart:before,
-        .heart:after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ff6b81;
-            border-radius: 50%;
+        /* Estilo para el mensaje de instrucciones */
+        .instructions {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
         }
-
-        .heart:before {
-            top: -10px;
-            left: 0;
-        }
-
-        .heart:after {
-            top: 0;
-            left: -10px;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(45deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(45deg);
-                opacity: 0;
-            }
-        }
-
-        /* Generar múltiples corazones */
-        .heart:nth-child(1) { left: 10%; animation-duration: 8s; }
-        .heart:nth-child(2) { left: 20%; animation-duration: 10s; }
-        .heart:nth-child(3) { left: 30%; animation-duration: 6s; }
-        .heart:nth-child(4) { left: 40%; animation-duration: 12s; }
-        .heart:nth-child(5) { left: 50%; animation-duration: 7s; }
-        .heart:nth-child(6) { left: 60%; animation-duration: 9s; }
-        .heart:nth-child(7) { left: 70%; animation-duration: 11s; }
-        .heart:nth-child(8) { left: 80%; animation-duration: 5s; }
-        .heart:nth-child(9) { left: 90%; animation-duration: 8s; }
-        .heart:nth-child(1) { left: 10%; animation-duration: 8s; }
-        .heart:nth-child(2) { left: 20%; animation-duration: 10s; }
-        .heart:nth-child(3) { left: 30%; animation-duration: 6s; }
-        .heart:nth-child(4) { left: 40%; animation-duration: 12s; }
-        .heart:nth-child(5) { left: 50%; animation-duration: 7s; }
-        .heart:nth-child(6) { left: 60%; animation-duration: 9s; }
-        .heart:nth-child(7) { left: 70%; animation-duration: 11s; }
-        .heart:nth-child(8) { left: 80%; animation-duration: 5s; }
-        .heart:nth-child(9) { left: 90%; animation-duration: 8s; }
-    </style>
     </style>
 </head>
 <body>
+
+    <!-- Instrucciones -->
+    <div class="instructions">
+        QUERÍA ESPOSA PRIMERO REPRODUCE EL AUDIO Y DA CLICK EN ENVIAR AMOR Y DESPUES LEER CARTA
+    </div>
+
+    <!-- Reproductor de audio oculto -->
+    <audio id="audioPlayer" preload="auto">
+        <source src="/audio/Mon Laferte - Amor Completo.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
     <div class="container">
         <h1>🎉 ¡Feliz Cumpleaños, Mi Amor! 🎉</h1>
         <p>Anita Belén, eres la razón de mis sonrisas y la luz de mis días. Que este día esté lleno de amor, risas y momentos inolvidables. 💖</p>
 
-        <audio controls>
-            <source src="/audio/Mon Laferte - Amor Completo.mp3" type="audio/mp3">
-            Tu navegador no soporta el elemento de audio.
-        </audio>
-
         <div class="mt-4">
+            <button class="btn btn-custom" onclick="playAudio()">💖 Enviar Amor 💖</button>
+        </div>
+
+        <div class="mt-3">
             <button class="btn btn-custom" onclick="toggleVideos()">🎵 Canciones Especiales 🎵</button>
         </div>
 
         <div id="videoContainer" class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/xvVUPGI8Kgo" title="YouTube video player" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/nRUtraoH6Yg" title="YouTube video player" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xvVUPGI8Kgo?si=GNEWsJaVjt3SjVSy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/nRUtraoH6Yg?si=6tFNvlgnT6he9E5Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
+        <!-- Nuevo botón para abrir la carta -->
         <div class="mt-4">
             <button class="btn btn-custom" onclick="toggleCarta()">📜 Carta para mi esposa 📜</button>
         </div>
 
+        <!-- Contenedor de la carta -->
         <div id="cartaContainer">
             <div id="carta" class="carta">
                 <p>Mi amor,</p>
@@ -179,31 +161,61 @@
                 <p>Gracias, Anita Belén, por cuidarme con tanto amor y dedicación, especialmente en los momentos difíciles. Por esas noches en las que velas por mí, por tus manos que me sostienen, por tu corazón lleno de amor que nunca se cansa de dar. Tu cariño es mi mayor bendición, y en tus ojos encuentro la paz que necesito para enfrentar cualquier cosa.</p>
                 <p>Hoy, en tu día, le pido a Dios que te llene de salud, alegría y muchos años más de vida. Que cada sonrisa tuya se multiplique, que cada deseo de tu corazón se cumpla, y que todas las bendiciones que me das se te devuelvan al triple. Porque si alguien merece ser feliz, eres tú, mi reina.</p>
                 <p>Quiero que sepas que, aunque no siempre pueda expresarlo como quisiera, cada día te amo más. Eres mi todo, mi motivo, mi milagro. Hoy celebro tu vida, y le doy gracias a Dios por permitirme compartirla contigo.</p>
-                <p class="signature">Te amo con todo mi corazón. ¡Feliz cumpleaños, mi hermosa Anita Belén!<br>Con todo mi amor, <br>RUEDITAS</p>
+                <p>Te amo con todo mi corazón. ¡Feliz cumpleaños, mi hermosa Anita Belén!</p>
+                <p class="signature">Con todo mi amor, <br>RUEDITAS</p>
             </div>
         </div>
-        
-    </div>
 
-    <!-- Corazones flotantes -->
-    <div id="hearts">
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
     <script>
+        const phrases = [
+            "Eres mi sol en días nublados ☀️",
+            "Te amo más de lo que las palabras pueden decir ❤️",
+            "Gracias por hacer mi vida tan especial 🌟",
+            "Eres el sueño del que nunca quiero despertar 💕",
+            "Hoy celebramos el regalo más hermoso: tú 🎁"
+        ];
+
+        function toggleHeartsAndPhrases() {
+            const body = document.body;
+
+            // Evitar que se agreguen más corazones y frases si ya están en pantalla
+            if (document.querySelectorAll('.heart').length === 0) {
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
+                    heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+                    body.appendChild(heart);
+                }
+
+                setInterval(() => {
+                    const phrase = phrases[Math.floor(Math.random() * phrases.length)];
+                    const phraseElement = document.createElement('p');
+                    phraseElement.textContent = phrase;
+                    phraseElement.style.position = 'absolute';
+                    phraseElement.style.left = Math.random() * 100 + 'vw';
+                    phraseElement.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
+                    body.appendChild(phraseElement);
+                    setTimeout(() => phraseElement.remove(), 3000);
+                }, 2000);
+            }
+        }
+
         function toggleVideos() {
             const videoContainer = document.getElementById('videoContainer');
             videoContainer.style.display = videoContainer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function playAudio() {
+            const audioPlayer = document.getElementById('audioPlayer');
+            audioPlayer.play();
         }
 
         function toggleCarta() {
