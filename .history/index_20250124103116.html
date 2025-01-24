@@ -112,7 +112,9 @@
         <source src="/audio/Mon Laferte - Amor Completo.mp3" type="audio/mp3">
         Tu navegador no soporta el elemento de audio.
     </audio>
-
+    </style>
+</head>
+<body>
     <div class="container">
         <h1>🎉 ¡Feliz Cumpleaños, Mi Amor! 🎉</h1>
         <p>Anita Belén, eres la razón de mis sonrisas y la luz de mis días. Que este día esté lleno de amor, risas y momentos inolvidables. 💖</p>
@@ -129,6 +131,12 @@
             <iframe width="560" height="315" src="https://www.youtube.com/embed/xvVUPGI8Kgo?si=GNEWsJaVjt3SjVSy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/nRUtraoH6Yg?si=6tFNvlgnT6he9E5Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+        <!-- Agregar el archivo de audio con autoplay -->
+<audio id="audioPlayer" autoplay>
+    <source src="/audio/Mon Laferte - Amor Completo.mp3" type="audio/mp3">
+    Tu navegador no soporta el elemento de audio.
+</audio>
+
 
         <!-- Nuevo botón para abrir la carta -->
         <div class="mt-4">
@@ -140,16 +148,13 @@
             <div id="carta" class="carta">
                 <p>Mi amor,</p>
                 <p>Querida Anita Belén:</p>
-                <p>Hoy, en el día de tu cumpleaños, quiero escribirte desde lo más profundo de mi corazón, porque no hay palabras suficientes para describir cuánto significas para mí. Eres mucho más que mi esposa; eres mi compañera de vida, mi apoyo incondicional y el mayor regalo que Dios me ha dado.</p>
-                <p>Quiero agradecerte, mi amor, por ser esa mujer increíble que nunca deja de sorprenderme con su bondad, su paciencia y su fortaleza. Por cada sonrisa que me regalas, por cada palabra de aliento y por cada vez que me demuestras que el amor verdadero existe. En cada día de nuestra vida juntos, tú has sido mi razón para seguir adelante, incluso cuando la vida me pone retos.</p>
-                <p>Gracias, Anita Belén, por cuidarme con tanto amor y dedicación, especialmente en los momentos difíciles. Por esas noches en las que velas por mí, por tus manos que me sostienen, por tu corazón lleno de amor que nunca se cansa de dar. Tu cariño es mi mayor bendición, y en tus ojos encuentro la paz que necesito para enfrentar cualquier cosa.</p>
-                <p>Hoy, en tu día, le pido a Dios que te llene de salud, alegría y muchos años más de vida. Que cada sonrisa tuya se multiplique, que cada deseo de tu corazón se cumpla, y que todas las bendiciones que me das se te devuelvan al triple. Porque si alguien merece ser feliz, eres tú, mi reina.</p>
-                <p>Quiero que sepas que, aunque no siempre pueda expresarlo como quisiera, cada día te amo más. Eres mi todo, mi motivo, mi milagro. Hoy celebro tu vida, y le doy gracias a Dios por permitirme compartirla contigo.</p>
-                <p>Te amo con todo mi corazón. ¡Feliz cumpleaños, mi hermosa Anita Belén!</p>
-                <p class="signature">Con todo mi amor, <br>RUEDITAS</p>
+                <p>Hoy, en el día de tu cumpleaños, quiero escribirte desde lo más profundo de mi corazón, porque no hay palabras suficientes para describir cuánto significas para mí...</p>
+                <p class="signature">Con todo mi amor, [RUEDITAS]</p>
             </div>
         </div>
 
+        <!-- Reproductor de música -->
+    
     </div>
 
     <!-- Bootstrap JS -->
@@ -165,28 +170,28 @@
         ];
 
         function toggleHeartsAndPhrases() {
-            const body = document.body;
+    const body = document.body;
 
-            // Evitar que se agreguen más corazones y frases si ya están en pantalla
-            if (document.querySelectorAll('.heart').length === 0) {
-                for (let i = 0; i < 20; i++) {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart';
-                    heart.innerHTML = '❤️';
-                    heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
-                    heart.style.animationDelay = Math.random() * 2 + 's';
-                    body.appendChild(heart);
+    // Evitar que se agreguen más corazones y frases si ya están en pantalla
+    if (document.querySelectorAll('.heart').length === 0) {
+        for (let i = 0; i < 20; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            body.appendChild(heart);
 
-                    const phrase = document.createElement('div');
-                    phrase.className = 'phrase';
-                    phrase.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
-                    phrase.style.left = Math.random() * 100 + 'vw';
-                    phrase.style.animationDelay = Math.random() * 2 + 's';
-                    body.appendChild(phrase);
-                }
-            }
+            const phrase = document.createElement('div');
+            phrase.className = 'phrase';
+            phrase.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
+            phrase.style.left = Math.random() * 100 + 'vw';
+            phrase.style.animationDelay = Math.random() * 2 + 's';
+            body.appendChild(phrase);
         }
+    }
+}
 
         function toggleVideos() {
             const videoContainer = document.getElementById('videoContainer');
