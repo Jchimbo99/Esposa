@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Amor!</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 1.4rem;
+            margin: 20px 0;
+        }
+        .btn-custom {
+            background-color: #f67280;
+            border: none;
+            color: black; /* Cambiar el color de las letras a negro */
+            padding: 12px 25px; /* Aumentar el tamaño del botón */
+            font-size: 1.4rem; /* Aumentar el tamaño de la fuente */
+            font-family: 'Montserrat', sans-serif; /* Fuente elegante */
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #c06c84;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        /* Carta Animación */
+        #cartaContainer {
+            display: none;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .carta-img.opened {
+            transform: rotateY(180deg);
+        }
+
+        .carta {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            color: #000;
+            font-family: 'Dancing Script', cursive;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .carta p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .carta .signature {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 ¡Feliz Cumpleaños, Mi Amor! 🎉</h1>
+        <p>Anita Belén, eres la razón de mis sonrisas y la luz de mis días. Que este día esté lleno de amor, risas y momentos inolvidables. 💖</p>
+
+        <div class="mt-4">
+            <button class="btn btn-custom" onclick="generateHeartsAndPhrases()">💖 Enviar Amor 💖</button>
+        </div>
+
+        <div class="mt-3">
+            <button class="btn btn-custom" onclick="toggleVideos()">🎵 Canciones Especiales 🎵</button>
+        </div>
+
+        <div id="videoContainer" class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xvVUPGI8Kgo?si=GNEWsJaVjt3SjVSy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/nRUtraoH6Yg?si=6tFNvlgnT6he9E5Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="mt-3">
+                <a href="/audio/Mon Laferte - Amor Completo.mp3" download="/audio" class="btn btn-custom">🎶 Descargar Música con mucho amor para mi Esposa 🎶</a>
+            </div>
+        </div>
+
+        <!-- Nuevo botón para abrir la carta automáticamente -->
+        <div class="mt-4">
+            <button class="btn btn-custom" onclick="openCarta()">📜 Carta para mi esposa 📜</button>
+        </div>
+
+        <!-- Contenedor de la carta -->
+        <div id="cartaContainer">
+            <div id="carta" class="carta">
+                <p>Mi amor,</p>
+                <p>Hoy es un día muy especial, un día en el que celebro la dicha de tenerte en mi vida. Tu amor me llena de alegría y me hace sentir afortunado cada día. Gracias por ser la razón de mis sonrisas y por llenar mi corazón de amor incondicional.</p>
+                <p>Te amo más de lo que las palabras pueden expresar, y siempre lo haré. ¡Feliz cumpleaños, mi amor! Que este día esté lleno de amor, felicidad y momentos que nunca olvidarás.</p>
+                <p class="signature">Con todo mi amor, tu [nombre]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        const phrases = [
+            "Eres mi sol en días nublados ☀️",
+            "Te amo más de lo que las palabras pueden decir ❤️",
+            "Gracias por hacer mi vida tan especial 🌟",
+            "Eres el sueño del que nunca quiero despertar 💕",
+            "Hoy celebramos el regalo más hermoso: tú 🎁"
+        ];
+
+        function generateHeartsAndPhrases() {
+            const body = document.body;
+
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                body.appendChild(heart);
+
+                const phrase = document.createElement('div');
+                phrase.className = 'phrase';
+                phrase.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
+                phrase.style.left = Math.random() * 100 + 'vw';
+                phrase.style.animationDelay = Math.random() * 2 + 's';
+                body.appendChild(phrase);
+
+                setTimeout(() => {
+                    heart.remove();
+                    phrase.remove();
+                }, 6000);
+            }
+        }
+
+        function toggleVideos() {
+            const videoContainer = document.getElementById('videoContainer');
+            videoContainer.style.display = videoContainer.style.display === 'none' || videoContainer.style.display === '' ? 'block' : 'none';
+        }
+
+        function openCarta() {
+            // Muestra el contenedor de la carta
+            document.getElementById('cartaContainer').style.display = 'block';
+
+            // Muestra la carta con un pequeño retraso para simular la animación de apertura
+            setTimeout(() => {
+                document.getElementById('carta').style.display = 'block';
+            }, 200);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Amor!</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.4rem;
+            margin: 20px 0;
+        }
+
+        .btn-custom {
+            background-color: #f67280;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #c06c84;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .floating-images {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-images img {
+            position: absolute;
+            width: 60px;
+            height: auto;
+            animation: float 10s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .images-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .images-container img {
+            width: 80px;
+            height: auto;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 ¡Feliz Cumpleaños, Mi Amor! 🎉</h1>
+        <p>Hoy celebramos tu vida, que ilumina el mundo como una vela en un pastel. 💖</p>
+
+        <div class="images-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/1973/1973898.png" alt="Pastel">
+            <img src="https://cdn-icons-png.flaticon.com/512/3513/3513487.png" alt="Regalo">
+            <img src="https://cdn-icons-png.flaticon.com/512/1202/1202545.png" alt="Muñeco feliz">
+        </div>
+
+        <div class="mt-4">
+            <button class="btn btn-custom" onclick="playMusic()">🎵 Reproducir Canción Especial 🎵</button>
+        </div>
+
+        <audio id="birthdayMusic" src="https://www.bensound.com/bensound-music/bensound-ukulele.mp3" type="audio/mpeg"></audio>
+    </div>
+
+    <div class="floating-images">
+        <img src="https://cdn-icons-png.flaticon.com/512/3796/3796956.png" alt="Sombrero de cumpleaños" style="top: 10%; left: 5%;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3514/3514491.png" alt="Gato feliz" style="top: 20%; left: 85%;">
+        <img src="https://cdn-icons-png.flaticon.com/512/1202/1202590.png" alt="Corazón" style="top: 50%; left: 15%;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3796/3796918.png" alt="Pastel animado" style="top: 75%; left: 70%;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3796/3796938.png" alt="Sombrero animado" style="top: 40%; left: 50%;">
+    </div>
+
+    <script>
+        function playMusic() {
+            const audio = document.getElementById('birthdayMusic');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
