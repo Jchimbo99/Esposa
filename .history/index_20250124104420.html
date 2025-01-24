@@ -93,7 +93,7 @@
             line-height: 1.6;
         }
 
-        .carta .signature {
+        .carta .signature 
             font-size: 1.3rem;
             font-weight: bold;
             margin-top: 20px;
@@ -103,28 +103,12 @@
         audio {
             display: none; /* Ocultar el reproductor */
         }
-
-        /* Estilo para el mensaje de instrucciones */
-        .instructions {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border-radius: 10px;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Instrucciones -->
-    <div class="instructions">
-        DA CLICK EN ENVIAR AMOR Y DESPUES LEER CARTA
-    </div>
-
     <!-- Reproductor de audio oculto -->
-    <audio id="audioPlayer" preload="auto">
+    <audio id="audioPlayer" autoplay>
         <source src="/audio/Mon Laferte - Amor Completo.mp3" type="audio/mp3">
         Tu navegador no soporta el elemento de audio.
     </audio>
@@ -134,7 +118,7 @@
         <p>Anita Belén, eres la razón de mis sonrisas y la luz de mis días. Que este día esté lleno de amor, risas y momentos inolvidables. 💖</p>
 
         <div class="mt-4">
-            <button class="btn btn-custom" onclick="playAudio()">💖 Enviar Amor 💖</button>
+            <button class="btn btn-custom" onclick="toggleHeartsAndPhrases()">💖 Enviar Amor 💖</button>
         </div>
 
         <div class="mt-3">
@@ -223,12 +207,6 @@
                 }, 200);
             }
         }
-
-        // Función para reproducir el audio cuando se hace clic
-        function playAudio() {
-            const audio = document.getElementById('audioPlayer');
-            audio.play();
-        }
     </script>
 </body>
-</html> 
+</html>
